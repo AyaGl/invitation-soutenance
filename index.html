@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <title>Invitation Soutenance</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     body{
       margin:0;
@@ -12,41 +16,44 @@
       justify-content:center;
       align-items:center;
       background:#f8f1f1;
-      font-family:Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
+    /* Hauteur augmentée à 420px pour accueillir tout ton texte confortablement */
     .envelope{
       position:relative;
-      width:320px;
-      height:260px;
+      width:480px; 
+      height:420px;
       background:#ffffff;
-      border-radius:10px;
-      box-shadow:0 10px 25px rgba(0,0,0,0.2);
+      border-radius:15px;
+      box-shadow:0 15px 35px rgba(0,0,0,0.15);
       overflow:hidden;
     }
 
+    /* Ajustement du volet de l'enveloppe */
     .flap{
       position:absolute;
       top:0;
       left:0;
       width:0;
       height:0;
-      border-left:160px solid transparent;
-      border-right:160px solid transparent;
-      border-top:110px solid #ff8fa3;
+      border-left:240px solid transparent; 
+      border-right:240px solid transparent; 
+      border-top:180px solid #ff8fa3;
       transform-origin:top;
       animation:open 2s ease forwards;
       z-index:3;
     }
 
+    /* Ajustement de la lettre pour la nouvelle hauteur */
     .letter{
       position:absolute;
-      width:260px;
-      height:260px;
+      width:420px;
+      height:380px;
       background:white;
       left:30px;
-      top:30px;
-      border-radius:8px;
+      top:40px;
+      border-radius:10px;
       text-align:center;
       padding:20px;
       box-sizing:border-box;
@@ -56,24 +63,30 @@
 
     h2{
       color: #ff8fa3;
-      margin-bottom:10px;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      margin-top: 5px;
     }
 
     p{
       color:#444;
       font-size:16px;
-      margin:8px 0;
+      line-height: 1.5;
+      margin:10px 0;
     }
 
     .finally{
       color: #ff8fa3;
       font-weight:bold;
-      font-size:20px;
+      font-size:22px;
+      margin-top: 15px;
     }
 
     .heart{
-      font-size:28px;
+      font-size:34px;
       animation:beat 1s infinite;
+      margin-bottom: 5px;
     }
 
     @keyframes open{
@@ -87,11 +100,11 @@
 
     @keyframes showLetter{
       from{
-        transform:translateY(60px);
+        transform:translateY(120px);
         opacity:0;
       }
       to{
-        transform:translateY(-10px);
+        transform:translateY(-25px);
         opacity:1;
       }
     }
@@ -110,23 +123,15 @@
 <body>
 
   <div class="envelope">
-
     <div class="flap"></div>
-
     <div class="letter">
-
       <div class="heart">💌</div>
-
-      <h2>BIEN Venue</h2>
-
-      <p>You are invited to my graduation 🎓</p>
-
-      <p>save the date
-        📅  11.06.2026</p>
-        <p class="finally">FINALLY ✨</p>
-
+      <h2>Dear My Family & Friends</h2>
+      <p>I am so happy to announce that I am finally graduated! 🎓</p>
+      <p>You are invited to my graduation babieesss ✨</p>
+      <p><strong>Save the date:</strong> 📅 11.06.2026</p>
+      <p class="finally">FINALLY I am soo happy! 🥳🎉</p>
     </div>
-
   </div>
 
 </body>
