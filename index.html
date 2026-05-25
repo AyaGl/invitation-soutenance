@@ -19,7 +19,6 @@
       font-family: 'Poppins', sans-serif;
     }
 
-    /* Hauteur augmentée à 420px pour accueillir tout ton texte confortablement */
     .envelope{
       position:relative;
       width:480px; 
@@ -28,9 +27,9 @@
       border-radius:15px;
       box-shadow:0 15px 35px rgba(0,0,0,0.15);
       overflow:hidden;
+      cursor: pointer;
     }
 
-    /* Ajustement du volet de l'enveloppe */
     .flap{
       position:absolute;
       top:0;
@@ -41,11 +40,23 @@
       border-right:240px solid transparent; 
       border-top:180px solid #ff8fa3;
       transform-origin:top;
-      animation:open 2s ease forwards;
+      transition: transform 1.5s ease;
       z-index:3;
     }
 
-    /* Ajustement de la lettre pour la nouvelle hauteur */
+    /* Le texte "Ouvre moi" placé directement sur le blanc de l'enveloppe */
+    .click-me {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      bottom: 60px; /* Placé en bas sur la partie blanche */
+      color: #ff8fa3;
+      font-weight: bold;
+      font-size: 22px;
+      z-index: 4; /* Reste au-dessus de tout au début */
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
     .letter{
       position:absolute;
       width:420px;
@@ -57,9 +68,31 @@
       text-align:center;
       padding:20px;
       box-sizing:border-box;
-      animation:showLetter 2s ease forwards;
+      opacity: 0;
+      transform: translateY(120px);
+      transition: transform 1.5s ease, opacity 1.5s ease;
       z-index:1;
     }
+
+    /* --- ACTIONS AU CLIC --- */
+    .envelope.open .flap {
+      transform: rotateX(180deg);
+      z-index: 1; /* Passe derrière pour pas bloquer la lettre */
+    }
+
+    /* Cache le texte "Ouvre moi" quand c'est ouvert */
+    .envelope.open .click-me {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+
+    .envelope.open .letter {
+      opacity: 1;
+      transform: translateY(-25px);
+      z-index: 2;
+    }
+    /* ---------------------- */
 
     h2{
       color: #ff8fa3;
@@ -89,41 +122,20 @@
       margin-bottom: 5px;
     }
 
-    @keyframes open{
-      from{
-        transform:rotateX(0deg);
-      }
-      to{
-        transform:rotateX(180deg);
-      }
-    }
-
-    @keyframes showLetter{
-      from{
-        transform:translateY(120px);
-        opacity:0;
-      }
-      to{
-        transform:translateY(-25px);
-        opacity:1;
-      }
-    }
-
     @keyframes beat{
-      0%,100%{
-        transform:scale(1);
-      }
-      50%{
-        transform:scale(1.2);
-      }
+      0%,100%{ transform:scale(1); }
+      50%{ transform:scale(1.2); }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="envelope">
+  <div class="envelope" onclick="ouvrirInvitation(this)">
     <div class="flap"></div>
+    
+    <div class="click-me">ouvre moii! 👇</div>
+    
     <div class="letter">
       <div class="heart">💌</div>
       <h2>Dear My Family & Friends</h2>
@@ -133,6 +145,12 @@
       <p class="finally">FINALLY I am soo happy! 🥳🎉</p>
     </div>
   </div>
+
+  <script>
+    function ouvrirInvitation(enveloppe) {
+      enveloppe.classList.toggle('open');
+    }
+  </script>
 
 </body>
 </html>
