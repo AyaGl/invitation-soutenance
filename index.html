@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Invitation Soutenance</title>
+
+  <style>
+    body{
+      margin:0;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#f8f1f1;
+      font-family:Arial, sans-serif;
+    }
+
+    .envelope{
+      position:relative;
+      width:320px;
+      height:260px;
+      background:#ffffff;
+      border-radius:10px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.2);
+      overflow:hidden;
+    }
+
+    .flap{
+      position:absolute;
+      top:0;
+      left:0;
+      width:0;
+      height:0;
+      border-left:160px solid transparent;
+      border-right:160px solid transparent;
+      border-top:110px solid #ff8fa3;
+      transform-origin:top;
+      animation:open 2s ease forwards;
+      z-index:3;
+    }
+
+    .letter{
+      position:absolute;
+      width:260px;
+      height:260px;
+      background:white;
+      left:30px;
+      top:30px;
+      border-radius:8px;
+      text-align:center;
+      padding:20px;
+      box-sizing:border-box;
+      animation:showLetter 2s ease forwards;
+      z-index:1;
+    }
+
+    h2{
+      color: #ff8fa3;
+      margin-bottom:10px;
+    }
+
+    p{
+      color:#444;
+      font-size:16px;
+      margin:8px 0;
+    }
+
+    .finally{
+      color: #ff8fa3;
+      font-weight:bold;
+      font-size:20px;
+    }
+
+    .heart{
+      font-size:28px;
+      animation:beat 1s infinite;
+    }
+
+    @keyframes open{
+      from{
+        transform:rotateX(0deg);
+      }
+      to{
+        transform:rotateX(180deg);
+      }
+    }
+
+    @keyframes showLetter{
+      from{
+        transform:translateY(60px);
+        opacity:0;
+      }
+      to{
+        transform:translateY(-10px);
+        opacity:1;
+      }
+    }
+
+    @keyframes beat{
+      0%,100%{
+        transform:scale(1);
+      }
+      50%{
+        transform:scale(1.2);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="envelope">
+
+    <div class="flap"></div>
+
+    <div class="letter">
+
+      <div class="heart">💌</div>
+
+      <h2>BIEN Venue</h2>
+
+      <p>You are invited to my graduation 🎓</p>
+
+      <p>save the date
+        📅  11.06.2026</p>
+        <p class="finally">FINALLY ✨</p>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
